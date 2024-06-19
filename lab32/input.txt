@@ -1,0 +1,55 @@
+TYPE Coords = RECORD x, y: INTEGER end;             CONST MaxPoints = 100;
+TYPE
+  CoordsVector = ARRAY 1..MaxPoints OF Coords;  CONST Heigh = 
+  480; Width = 640; Lines = 24;Columns = 80;
+TYPE
+  BaseColor = (red, green, blue, highlited); Color = BaseColor ;
+
+
+
+  GraphicScreen = ARRAY
+
+
+  1..Heigh OF 
+  ARRAY 1..Width OF 
+  Color ;
+  TextScreen = ARRAY 1..Lines 
+  OF ARRAY                               1..Columns OF
+    RECORD
+
+
+      Symbol 
+  : CHAR;
+
+
+
+      SymColor :
+      Color;
+
+{sdfsdfsdfsf}
+      BackColor : Color
+    end;
+TYPE Domain = (Ident, IntNumber, RealNumber);  Token = RECORD
+    fragment : RECORD
+
+
+      start, following : 
+      RECORD
+        row, col : 
+        INTEGER
+      end end; case toktype : Domain OF
+      Ident : ( name : ARRAY [1..32] OF CHAR );  IntNumber : (   intval : INTEGER
+      );
+
+
+
+
+      RealNumber : (  realval : REAL  ) end;
+Year = 1900..2050;
+
+  
+
+
+                                          List = RECORD
+    value : Token;              next : ^List
+  end;

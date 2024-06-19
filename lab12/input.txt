@@ -1,0 +1,16 @@
+| % $ x `x`
++-=
+-- test + testtt
+ident + lll
+{- first
+multi line
+comment where
+-}
+anotherident + -- where anotheridentt
+ident1 => ident2 -> ident3 where ident4 +-> =>
+ident33 + ident88 {- identbl
+--
+-}
+
+3242 4234 + variable
+ ident42 -- 3432

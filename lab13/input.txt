@@ -1,0 +1,8 @@
+abc        
+qeq
+mov movmv
+     xyz xxyz               xxx
+qeql 213Ch 25A25h
+
+h11h  4f11h   abc5 
+qeql   FF FF0 aux

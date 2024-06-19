@@ -1,0 +1,92 @@
+
+Program->
+        Block Program
+        |
+.   
+ 
+Block->
+        TYPE Typedef Typedefs
+        | CONST Constdef Constdefs
+        .
+LB-> 
+        LEFT_BRACKET
+        | 
+
+        .
+RB-> 
+        RIGHT_BRACKET
+        |
+  
+        .
+Typedefs->
+        Typedef Typedefs
+        | 
+        .
+Typedef->
+        IDENT  EQUALS   BigType SEMICOLON 
+        .
+
+Constdefs->
+        Constdef Constdefs
+        |
+        .
+Constdef->
+        IDENT  EQUALS   Expr SEMICOLON  
+        .
+SimpleType->
+        LEFT_PAREN   IDENT   Identifiers RIGHT_PAREN  
+        | Expr TWODOTS   Expr
+        | IDENT 
+        .
+Identifiers->
+        COMMA IDENT Identifiers
+        |
+        .
+BigType->
+        SimpleType
+        | PackableType
+        | ARROW IDENT
+        .
+PackableType-> 
+        ARRAY  LB Wrapped RB KW_OF  BigType
+        | KW_SET  KW_OF  BigType
+        | KW_FILE    KW_OF  BigType 
+        | KW_RECORD   FieldList KW_END 
+        .
+Wrapped->
+        SimpleType SimpleTypes
+        .
+SimpleTypes->
+        COMMA SimpleType SimpleTypes
+        |
+        .
+
+FieldList->
+        FieldRecord FieldList
+        |
+        .
+FieldRecords->
+        SEMICOLON  FieldRecord
+        |
+        .
+FieldRecord->
+        AnotherWrapped COLON  BigType FieldRecords
+        | CaseType
+        .
+CaseType->
+        KW_CASE  IDENT  COLON  IDENT  KW_OF          FourthWrapped
+        .
+
+FourthWrapped->
+        IDENT Identifiers COLON   LEFT_PAREN FieldList          RIGHT_PAREN Cycle
+        .
+
+Cycle->
+        SEMICOLON   FourthWrapped   
+        | 
+        .
+AnotherWrapped->
+        IDENT   Identifiers
+        .
+
+
